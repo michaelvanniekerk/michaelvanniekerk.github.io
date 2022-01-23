@@ -1346,12 +1346,15 @@
       // Higlight the destination square in red
       $board.find(".square-" + square).addClass(CSS.highlight3);
 
+      var piece = currentPosition[square];
       var cooldown = $(
         `#${currentPosition[square].substring(1, 2).toLowerCase()}-cooldown`
       ).val();
 
       setTimeout(() => {
-        $board.find(".square-" + square).removeClass(CSS.highlight3);
+        if (piece == currentPosition[square]) {
+          $board.find(".square-" + square).removeClass(CSS.highlight3);
+        }
       }, cooldown * 1000);
 
       // set state
